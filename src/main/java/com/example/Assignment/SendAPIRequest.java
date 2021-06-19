@@ -13,8 +13,8 @@ public class SendAPIRequest {
     public Location sendAPIRequest(String json) throws IOException {
         String address = json.replaceAll(" ", "");
         String url = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-        String api = ",&key=AIzaSyA5bwbEsAOUMOI4RK2zXcIayG4vjuQSpcw";
-        URL obj = new URL(url +""+address+"" + api);
+        String api_key = ",&key=AIzaSyA5bwbEsAOUMOI4RK2zXcIayG4vjuQSpcw";
+        URL obj = new URL(url +""+address+"" + api_key);
         HttpURLConnection httpURLConnection = (HttpURLConnection) obj.openConnection();
         httpURLConnection.setRequestMethod("GET");
         int responseCode = httpURLConnection.getResponseCode();
