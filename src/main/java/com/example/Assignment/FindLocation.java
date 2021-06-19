@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 @Path("/find-location")
-public class HelloResource {
+public class FindLocation {
     @POST
     @Produces("application/json")
     public ArrayList<Location> getAddress(String jsonBody) throws IOException {
