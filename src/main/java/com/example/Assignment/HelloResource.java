@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 @Path("/find-location")
 public class HelloResource {
@@ -17,8 +18,10 @@ public class HelloResource {
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Location> getAddress(String jsonBody) throws IOException {
         ArrayList<Location> arrayList = new ArrayList<>();
+        JSONObject reader = new JSONObject(jsonBody);
+        Iterator<String> iteratorObj = reader.keys();
         JSONObject jsonObject = new JSONObject(jsonBody);
-        JSONArray add = jsonObject.getJSONArray("add");
+        JSONArray add = jsonObject.optJSONArray(iteratorObj.next());
         SendAPIRequest sendAPIRequest = new SendAPIRequest();
         for(int i = 0 ; i < add.length() ; i++){
             arrayList.add(sendAPIRequest.sendAPIRequest(add.getString(i)));
